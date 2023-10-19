@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
-n1 = 20
-n2 = 8
+def gcd(num1, num2):
 
-for i in range(1, n1):
+    while (num2 != 0):
+        ans  = num1
+        num1 = num2
+        num2 = num1 % num2
 
-    if n1 % i == 0 and n2 % i == 0:
-        gcd = i
+    return ans
 
-print(gcd)
+
+print(gcd(8, 20))
