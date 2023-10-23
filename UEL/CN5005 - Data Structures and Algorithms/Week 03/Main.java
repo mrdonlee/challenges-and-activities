@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        SingleLinkedList list = new SingleLinkedList();
+        DoubleLinkedList list = new DoubleLinkedList();
         /*
         list.AddNode(2);
         list.AddNode(3);
@@ -15,7 +15,9 @@ public class Main {
         System.out.println();
         list.PrintList();
          */
-        list.AddElements(5);
+        list.append(5);
+        list.prepend(2);
+        list.append(3);
         list.PrintList();
     }
 }
