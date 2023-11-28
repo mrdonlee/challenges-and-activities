@@ -1,0 +1,48 @@
+-- Create EMP table
+
+CREATE TABLE EMPLOYEE(
+    Fname VARCHAR2(15) NOT NULL,
+    Minit CHAR(1) NOT NULL,
+    Lname VARCHAR2(15) NOT NULL,
+    Ssn NUMBER(10) UNIQUE NOT NULL,
+    Bdate DATE,
+    Address VARCHAR(50) NOT NULL,
+    Sex CHAR(1),
+    Salary NUMBER(6) NOT NULL,
+    Super_ssn NUMBER,
+Dno NUMBER(1) NOT NULL,
+);
+
+-- Create DEPT_LOC
+
+CREATE TABLE DEPT_LOCATIONS(
+	Dnumber NUMBER(1) UNIQUE NOT NULL,
+	Dlocation VARCHAR(10) NOT NULL
+);
+
+-- Create WORKS_ON
+
+CREATE TABLE WORKS_ON(
+	Essn NUMBER(10) NOT NULL,
+	Pno NUMBER(2) NOT NULL,
+	Hours NUMBER(3, 2) NOT NULL
+);
+
+-- Create PROJECT
+
+CREATE TABLE PROJECT(
+	Pname VARCHAR2(25) NOT NULL,
+	Pnumber number(2) UNIQUE NOT NULL,
+	Plocation VARCHAR(10),
+	Dnum NUMBER(1) NOT NULL
+);
+
+-- Create DEPENDANT
+
+CREATE TABLE DEPENDENT(
+	Essn NUMBER(10) NOT NULL,
+	Department_name VARCHAR2(15) NOT NULL,
+	Sex CHAR(1),
+	Bdate DATE,
+	Relationship VARCHAR2(25) NOT NULL
+);
