@@ -1,0 +1,32 @@
+#!/bin/bash
+
+clear
+
+while true
+do
+	echo "========================================================"
+	echo "|                        MENU                          |"
+	echo "========================================================"
+	echo 
+	echo "Please select a number corresponding to the task below:"
+	echo
+	echo "[1] Create single user:"
+	echo "[2] Create multiple user:"
+	echo "[3] Edit user details:"
+	echo "[4] Delete user:"
+	echo "[0] Exit"
+	echo
+	read -p "Please select an option: " option
+
+	if [ $option == 0 ]; then
+		echo "Exiting..."
+		break
+	elif [ $option == 1 ]; then
+		read -p "Full Name: " full_name
+	else
+		echo
+		echo "Invalid input."
+		echo
+		read -p "Please enter a number between 1-4: " option
+	fi
+done

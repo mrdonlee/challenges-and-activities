@@ -1,0 +1,27 @@
+#!/bin/bash
+# This is a bash script
+# Author: Nidharshanen Selliah
+# ID: 2403010
+
+clear
+
+echo "This script starts now."
+echo
+
+echo "Hi, $USER!"
+echo
+
+echo "Here is the list of processes."
+echo
+ps -l
+echo
+
+echo "I'm now setting two variable."
+COLOUR="black"
+VALUE="9"
+
+echo "This is a string: $COLOUR"
+echo "This is a number: $VALUE"
+echo
+
+echo "Running you to the command prompt now."

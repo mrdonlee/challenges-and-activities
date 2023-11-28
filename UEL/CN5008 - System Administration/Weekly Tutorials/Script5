@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# This script displays a message between 1 and 10 times according to the number
+# specified by the user. It demonstrates how input can be collected from the user.
+#
+# source of script unknown
+#
+echo -n "Enter a number between 1 and 10 and press [ENTER]: "
+read number
+
+
+while true
+do
+  if [ $number -gt 0 ] && [ $number -le 10 ]; then
+	while [ $number -gt 0 ] && [ $number -le 10 ]
+	do
+	  echo “You ARE wonderful!”
+	  number=$[ $number - 1 ]
+	done
+	break
+  else
+	echo -n "Enter a number between 1 and 10 and press [ENTER]: "
+	read number
+  fi
+done
+

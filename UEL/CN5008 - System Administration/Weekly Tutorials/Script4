@@ -1,0 +1,31 @@
+#!/bin/bash
+
+clear
+
+echo "This script demonstrates how the values of certain variables"
+echo "such as \$#, \$@, \$0, \$1, \$2 etc. are automatically set"
+echo "by the shell prior to execution of scripts"
+
+echo "\$0 is set to the command name which is $0"
+echo "\$# is set to the number of parameters which = $#"
+
+if [ $# != 0 ]; then
+	echo "\$@ contains a list of all the parameters"
+	echo "supplied on the command line. Therefore:"
+	echo
+	echo "\$@ = $@"
+	echo
+	echo "\$1 is set to the first parameter in \$@"
+	echo "\$2 is set to the second parameter in \$@"
+	echo "\$3 is set to the third parameter and so on"
+	echo "Therefore:"
+	argsleft=$#
+	currentparam=1
+	while [ $argsleft -gt 0 ];
+	do
+		echo "\$$currentparam = $1"
+		argsleft=$[ $# - 1] 
+		currentparam=$[ $currentparam + 1 ]
+		shift
+	done
+fi
