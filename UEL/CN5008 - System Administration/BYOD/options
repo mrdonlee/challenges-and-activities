@@ -21,8 +21,10 @@ do
 	if [ $option == 0 ]; then
 		echo "Exiting..."
 		break
+
 	elif [ $option == 1 ]; then
 		read -p "Full Name: " full_name
+
 	else
 		echo
 		echo "Invalid input."
