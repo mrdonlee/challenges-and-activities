@@ -2,8 +2,7 @@
 
 clear
 
-while true
-do
+display_menu() {
 	echo "========================================================"
 	echo "|                        MENU                          |"
 	echo "========================================================"
@@ -17,6 +16,11 @@ do
 	echo "[0] Exit"
 	echo
 	read -p "Please select an option: " option
+}
+
+while true
+do
+    display_menu
 
 	if [ $option == 0 ]; then
 		echo "Exiting..."
