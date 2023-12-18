@@ -2,11 +2,12 @@
 
 clear
 
+# Declaring the function to display the menu and get correct option for the task to perform.
 display_menu() {
 	echo "========================================================"
 	echo "|                        MENU                          |"
 	echo "========================================================"
-	echo 
+	echo
 	echo "Please select a number corresponding to the task below:"
 	echo
 	echo "[1] Create single user:"
@@ -15,24 +16,83 @@ display_menu() {
 	echo "[4] Delete user:"
 	echo "[0] Exit"
 	echo
-	read -p "Please select an option: " option
+    read -p "Please select an option: " option # This will read from STDOUT (keyboard) and store in variable called option.
 }
 
+display_edit_menu() {
+	echo "========================================================"
+	echo "|                CHANGE USER DETAILS                   |"
+	echo "========================================================"
+	echo 
+	echo "Please select an option for modification:"
+	echo
+	echo "[1] Change full name:"
+	echo "[2] Change password:"
+	echo "[3] Change home directory:"
+	echo "[0] Exit"
+	echo
+    read -p "Please select an option: " mod_option # This will read from STDOUT (keyboard) and store in variable called option.
+}
+
+# This while loop will keep the program running until the user explicitly choose to quit.
 while true
 do
-    display_menu
+    display_menu # Calls display_menu fucntion to show the menu.
 
-	if [ $option == 0 ]; then
-		echo "Exiting..."
-		break
+    # The switch statement to read the selected option and perform tasks based on it.
+    case $option in
+        # If 0 is chosen the program will quit displaying the message Exiting...
+        0)
+            echo "Exiting..."
+            break
+            ;;
 
-	elif [ $option == 1 ]; then
-		read -p "Full Name: " full_name
+        # If 1 is chosen the program will use adduser command to create a new user.
+        1)
+            read -p "Enter username: " username
+            # This command will prompt the user to supply password for the new user and then will prompt for other details like full name and phone number.
+            if id $username &> /dev/null; then
+                echo "The user already exist."
+                break
+            else
+                sudo adduser $username
+            fi
+            ;;
 
-	else
-		echo
-		echo "Invalid input."
-		echo
-		read -p "Please enter a number between 1-4: " option
-	fi
+        # If the user select 2, the program will ask for the number of users to be added.
+        2)
+            # Lets the user specify how many users to add.
+            read -p "Number of users accounts: " user_count
+
+            # This loop will prompt user to give usernames for all users.
+            for ((i = 0; i < $user_count; i++)); do
+                read -p "Enter username of user $i: " username
+                sudo adduser $username
+            done
+            ;;
+
+        # If the user select 3, the program will prompt for the username of user to make modifications
+        3)
+            read -p "Enter username of the user to modify: " username
+            if id "$username" &> /dev/null; then # Check if the user exits
+                display_user_menu
+            else
+                echo "The user you specified does not exist."
+            fi
+            ;;
+        4)
+            read -p "Enter the username of the user to be deleted: " username
+            if id "$username" &> /dev/null; then
+                sudo userdel -r $username
+            else
+                echo "The user you specified does not exist."
+            fi
+            ;;
+        *)
+            echo
+            echo "Invalid input."
+            echo
+            read -p "Please enter a number between 1-4 or 0 to quit: " option
+            ;;
+    esac
 done
