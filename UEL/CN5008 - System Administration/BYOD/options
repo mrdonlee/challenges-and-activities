@@ -1,9 +1,9 @@
 #!/bin/bash
 
-clear
-
 # Declaring the function to display the menu and get correct option for the task to perform.
 display_menu() {
+    clear
+
 	echo "========================================================"
 	echo "|                        MENU                          |"
 	echo "========================================================"
@@ -20,6 +20,8 @@ display_menu() {
 }
 
 display_edit_menu() {
+    clear
+
 	echo "========================================================"
 	echo "|                CHANGE USER DETAILS                   |"
 	echo "========================================================"
@@ -57,6 +59,7 @@ do
             else
                 sudo adduser $username
             fi
+            break
             ;;
 
         # If the user select 2, the program will ask for the number of users to be added.
@@ -69,25 +72,36 @@ do
                 read -p "Enter username of user $i: " username
                 sudo adduser $username
             done
+            break
             ;;
 
         # If the user select 3, the program will prompt for the username of user to make modifications
         3)
             read -p "Enter username of the user to modify: " username
-            if id "$username" &> /dev/null; then # Check if the user exits
+
+            # Checks if the user exists and provide modification menu if there is a user, if not it will display message.
+            if id "$username" &> /dev/null; then
                 display_user_menu
             else
                 echo "The user you specified does not exist."
             fi
+            break
             ;;
+
+        # If option 4 is chosen, the user will get a prompt for entering a username to delete from the system.
         4)
             read -p "Enter the username of the user to be deleted: " username
+
+            # Checks if the user exists and delete is there is a user or display message if the user doesn't.
             if id "$username" &> /dev/null; then
                 sudo userdel -r $username
             else
                 echo "The user you specified does not exist."
             fi
+            break
             ;;
+
+        # If the user chooses any others not an option, this will default to displaying the message below and asks for a valid input.
         *)
             echo
             echo "Invalid input."
