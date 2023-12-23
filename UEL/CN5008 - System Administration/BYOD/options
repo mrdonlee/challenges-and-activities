@@ -63,7 +63,7 @@ display_edit_menu() {
             *)
                 echo "Invalid input..."
                 echo
-                read -p "Enter a 1 or 2 for option, or 0 to quit." mod_option
+                read -p "Enter a 1 or 2 for option, or 0 to quit: " mod_option
                 ;;
         esac
     done
