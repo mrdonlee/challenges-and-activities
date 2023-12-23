@@ -34,6 +34,19 @@ display_edit_menu() {
 	echo "[0] Exit"
 	echo
     read -p "Please select an option: " mod_option # This will read from STDOUT (keyboard) and store in variable called option.
+
+    while true
+    do
+        # This will read the input from the user and do the function corresponding to that.
+        case $mod_option in
+            0)
+                echo "Exiting..."
+                break
+                ;;
+
+            1)
+        esac
+    done
 }
 
 # This while loop will keep the program running until the user explicitly choose to quit.
