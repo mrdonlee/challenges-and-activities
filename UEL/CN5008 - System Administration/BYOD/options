@@ -19,6 +19,7 @@ display_menu() {
     read -p "Please select an option: " option # This will read from STDOUT (keyboard) and store in variable called option.
 }
 
+# The function that is called when the user select edit option from the main menu.
 display_edit_menu() {
     clear
 
