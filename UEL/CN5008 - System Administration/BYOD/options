@@ -44,6 +44,15 @@ display_edit_menu() {
                 ;;
 
             1)
+                echo -p "Enter the new full name: "
+                break
+                ;;
+                
+            2)
+                ;;
+
+            *)
+                ;;
         esac
     done
 }
@@ -82,7 +91,7 @@ do
             # This loop will prompt user to give usernames for all users.
             for ((i = 0; i < $user_count; i++)); do
                 read -p "Enter username of user $i: " username
-                sudo adduser $username
+                sudo useradd $username
             done
             break
             ;;
