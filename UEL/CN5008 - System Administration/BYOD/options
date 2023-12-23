@@ -30,7 +30,6 @@ display_edit_menu() {
 	echo
 	echo "[1] Change full name:"
 	echo "[2] Change password:"
-	echo "[3] Change home directory:"
 	echo "[0] Exit"
 	echo
     read -p "Please select an option: " mod_option # This will read from STDOUT (keyboard) and store in variable called option.
