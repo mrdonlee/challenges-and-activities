@@ -61,6 +61,9 @@ display_edit_menu() {
                 ;;
 
             *)
+                echo "Invalid input..."
+                echo
+                read -p "Enter a 1 or 2 for option, or 0 to quit." mod_option
                 ;;
         esac
     done
@@ -111,7 +114,7 @@ do
 
             # Checks if the user exists and provide modification menu if there is a user, if not it will display message.
             if id "$username" &> /dev/null; then
-                display_user_menu
+                display_edit_menu $username
             else
                 echo "The user you specified does not exist."
             fi
