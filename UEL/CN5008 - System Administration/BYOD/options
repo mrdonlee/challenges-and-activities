@@ -38,16 +38,22 @@ display_edit_menu() {
     do
         # This will read the input from the user and do the function corresponding to that.
         case $mod_option in
+
+            # If 0 is chosen, the program will exit out.
             0)
                 echo "Exiting..."
                 break
                 ;;
 
+            # If 1 is chosen th program will ask for a new full name and change the full name of the specified user.
             1)
-                echo -p "Enter the new full name: "
+                read -p "Enter the new full name: " full_name
+                sudo usermod -c "$full_name" $1
+
+                echo "Full name changed to $full_name"
                 break
                 ;;
-                
+
             2)
                 ;;
 
