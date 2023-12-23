@@ -55,6 +55,9 @@ display_edit_menu() {
                 ;;
 
             2)
+                echo "Please type in your new password: "
+                sudo passwd $1
+                break
                 ;;
 
             *)
