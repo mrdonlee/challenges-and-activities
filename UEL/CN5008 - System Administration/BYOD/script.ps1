@@ -14,7 +14,7 @@ function Display-Menu {
     Write-Host "[4] Delete user:"
     Write-Host "[0] Exit"
     Write-Host ""
-    $option = Read-Host "Please select an option" # Gets input from the user and store in option variable.
+    return (Read-Host "Please select an option") # Gets input from the user and returns the input.
 }
 
 # The function used to display edit options for a specified user.
@@ -68,7 +68,7 @@ function Display-EditMenu {
 
 # The main program script which runs when executed.
 while ($true) {
-    Display-Menu # Calls the function to display the main menu.
+    $option = Display-Menu # Calls the function and stores the return value in option variable..
 
     # Switch statement to execute funtions based on the selected option.
     switch ($option) {
