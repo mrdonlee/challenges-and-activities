@@ -66,7 +66,7 @@ function Display-EditMenu {
     }
 }
 
-# The main program script which runs when executed.
+# The function that contains the main program script which runs when executed.
 function Main {
     while ($true) {
         $option = Display-Menu # Calls the function and stores the return value in option variable..
@@ -135,3 +135,5 @@ function Main {
         }
     }
 }
+
+main # Calls the main function.
