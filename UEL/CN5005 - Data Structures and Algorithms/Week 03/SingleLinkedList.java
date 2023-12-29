@@ -1,4 +1,3 @@
-/*
 import java.util.Scanner;
 
 public class SingleLinkedList {
@@ -37,7 +36,6 @@ public class SingleLinkedList {
             now = now.next;
         }
         */
-/*
         do {
             System.out.print(" " + now.data);
             now = now.next;
@@ -64,4 +62,3 @@ public class SingleLinkedList {
         }
     }
 }
- */

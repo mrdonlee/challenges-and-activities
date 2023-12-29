@@ -4,4 +4,5 @@ public class Node {
     Node next;
 
     public Node(Node pre, int dat, Node nxt) {prev = pre; data = dat; next = nxt;}
+    public Node(int dat, Node nxt) {data = dat; next = nxt;}
 }

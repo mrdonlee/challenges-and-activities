@@ -52,8 +52,8 @@ function Display-EditMenu {
 
             # If 2 is chosen the user will be prompted to enter a new password for the specified user.
             2 {
-                Write-Host "Please type in your new password"
-                $username | Set-LocalUser -Password (Read-Host -AsSecureString)
+                $username | Set-LocalUser -Password (Read-Host -AsSecureString "Please type in your new password")
+                Write-Host "Password changed successfully..."
                 return
             }
 
@@ -97,7 +97,7 @@ function Main {
 
                 # The user is then prompted for usernames of all the users to be added in a loop.
                 for ($i = 0; $i -lt $user_count; $i++) {
-                    $username = Read-Host "Enter username of user $i"
+                    $username = Read-Host "Enter username of user $($i + 1)"
                     New-LocalUser -Name $username # All the users specified will be added to the system one by one.
                 }
                 return
