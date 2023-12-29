@@ -31,25 +31,33 @@ function DisplayEditMenu {
     Write-Host "[2] Change password:"
     Write-Host "[0] Exit"
     Write-Host ""
-    $mod_option = Read-Host "Please select an option"
+    $mod_option = Read-Host "Please select an option" # Gets input from the user and store in mod_option variable.
 
+    # The loop which will execute commands based on the option given by the user.
     while ($true) {
         switch ($mod_option) {
+            # If 0 is chosen the program will exit.
             0 {
                 Write-Host "Exiting..."
                 break
             }
+
+            # If 1 is chosen the user will be prompted to enter a new full name and the name of the user specified will be changed.
             1 {
                 $full_name = Read-Host "Enter the new full name"
                 net user $username /fullname:"$full_name"
-                Write-Host "Full name changed to $full_name"
+                Write-Host "Full name changed to $full_name" # A message will be displayed upon successful change of the name.
                 break
             }
+
+            # If 2 is chosen the user will be prompted to enter a new password for the specified user.
             2 {
                 Write-Host "Please type in your new password"
                 $username | Set-LocalUser -Password (Read-Host -AsSecureString)
                 break
             }
+
+            # If no number between 0-2 is chosen, the invalid message will be displayed and user will be prompted for a valid input again.
             default {
                 Write-Host "Invalid input..."
                 $mod_option = Read-Host "Enter 1 or 2 for option, or 0 to quit"
