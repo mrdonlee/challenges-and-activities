@@ -121,6 +121,7 @@ function Main {
                 # This user will then be deleted from the system if exist and message will be printed if not.
                 if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
                     Remove-LocalUser -Name $username
+                    Write-Host "$username delete successfully..."
                 } else {
                     Write-Host "The user you specified does not exist."
                 }
