@@ -105,7 +105,7 @@ do
 
             # This loop will prompt user to give usernames for all users.
             for ((i = 0; i < $user_count; i++)); do
-                read -p "Enter username of user $i: " username
+                read -p "Enter username of user $((i + 1)): " username
                 sudo useradd $username
             done
             break
