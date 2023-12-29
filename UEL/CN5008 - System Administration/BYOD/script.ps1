@@ -120,7 +120,7 @@ function Main {
 
                 # This user will then be deleted from the system if exist and message will be printed if not.
                 if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
-                    Remove-LocalUser -Name $username -Force
+                    Remove-LocalUser -Name $username
                 } else {
                     Write-Host "The user you specified does not exist."
                 }
