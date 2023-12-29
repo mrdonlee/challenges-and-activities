@@ -31,11 +31,11 @@ function Display-EditMenu {
     Write-Host "[2] Change password:"
     Write-Host "[0] Exit"
     Write-Host ""
-    $mod_option = Read-Host "Please select an option" # Gets input from the user and store in mod_option variable.
+    $modOption = Read-Host "Please select an option" # Gets input from the user and store in modOption variable.
 
     # The loop which will execute commands based on the option given by the user.
     while ($true) {
-        switch ($mod_option) {
+        switch ($modOption) {
             # If 0 is chosen the program will exit.
             0 {
                 Write-Host "Exiting..."
@@ -60,7 +60,7 @@ function Display-EditMenu {
             # If no number between 0-2 is chosen, the invalid message will be displayed and user will be prompted for a valid input again.
             default {
                 Write-Host "Invalid input..."
-                $mod_option = Read-Host "Enter 1 or 2 for option, or 0 to quit"
+                $modOption = Read-Host "Enter 1 or 2 for option, or 0 to quit"
             }
         }
     }
