@@ -44,9 +44,9 @@ function Display-EditMenu {
 
             # If 1 is chosen the user will be prompted to enter a new full name and the name of the user specified will be changed.
             1 {
-                $full_name = Read-Host "Enter the new full name"
-                net user $username /fullname:"$full_name"
-                Write-Host "Full name changed to $full_name" # A message will be displayed upon successful change of the name.
+                $fullName = Read-Host "Enter the new full name"
+                net user $username /fullname:"$fullName"
+                Write-Host "Full name changed to $fullName" # A message will be displayed upon successful change of the name.
                 break
             }
 
