@@ -18,7 +18,7 @@ function Display-Menu {
 }
 
 # The function used to display edit options for a specified user.
-function DisplayEditMenu {
+function Display-EditMenu {
     Clear-Host
 
     Write-Host "========================================================"
@@ -96,7 +96,7 @@ while ($true) {
         3 {
             $username = Read-Host "Enter username of the user to modify"
             if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
-                Display-Edit-Menu
+                Display-EditMenu
             } else {
                 Write-Host "The user you specified does not exist."
             }
