@@ -57,3 +57,55 @@ function DisplayEditMenu {
         }
     }
 }
+
+# The main program script which runs when executed.
+while ($true) {
+    Display-Menu
+
+    switch ($option) {
+        0 {
+            Write-Host "Exiting..."
+            break
+        }
+        1 {
+            $username = Read-Host "Enter username"
+            if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
+                Write-Host "The user already exists."
+                break
+            } else {
+                New-LocalUser -Name $username
+            }
+            break
+        }
+        2 {
+            $user_count = Read-Host "Number of user accounts"
+            for ($i = 0; $i -lt $user_count; $i++) {
+                $username = Read-Host "Enter username of user $i"
+                New-LocalUser -Name $username
+            }
+            break
+        }
+        3 {
+            $username = Read-Host "Enter username of the user to modify"
+            if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
+                Display-Edit-Menu
+            } else {
+                Write-Host "The user you specified does not exist."
+            }
+            break
+        }
+        4 {
+            $username = Read-Host "Enter the username of the user to be deleted"
+            if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
+                Remove-LocalUser -Name $username -Force
+            } else {
+                Write-Host "The user you specified does not exist."
+            }
+            break
+        }
+        default {
+            Write-Host "Invalid input."
+            $option = Read-Host "Please enter a number between 1-4 or 0 to quit"
+        }
+    }
+}
