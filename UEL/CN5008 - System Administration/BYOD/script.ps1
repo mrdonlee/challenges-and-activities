@@ -68,42 +68,56 @@ function Display-EditMenu {
 
 # The main program script which runs when executed.
 while ($true) {
-    Display-Menu
+    Display-Menu # Calls the function to display the main menu.
 
+    # Switch statement to execute funtions based on the selected option.
     switch ($option) {
+        # If 0 is chosen, the program will exit showing the message.
         0 {
             Write-Host "Exiting..."
             break
         }
+
+        # If 1 is chosen, the program will check if the user exist and then create the user if not.
         1 {
             $username = Read-Host "Enter username"
             if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
-                Write-Host "The user already exists."
+                Write-Host "The user already exists." # If the user doesn't exit, this message will be shown.
                 break
             } else {
-                New-LocalUser -Name $username
+                New-LocalUser -Name $username # Created a new user if the user doesn't exist.
             }
             break
         }
+
+        # If 2 the user will be prompted for number of user accounts to add.
         2 {
             $user_count = Read-Host "Number of user accounts"
+
+            # The user is then prompted for usernames of all the users to be added in a loop.
             for ($i = 0; $i -lt $user_count; $i++) {
                 $username = Read-Host "Enter username of user $i"
-                New-LocalUser -Name $username
+                New-LocalUser -Name $username # All the users specified will be added to the system one by one.
             }
             break
         }
+
+        # If 3 is chosen, the program will chek if the user exist and will display the menu if yes.
         3 {
             $username = Read-Host "Enter username of the user to modify"
             if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
                 Display-EditMenu
             } else {
-                Write-Host "The user you specified does not exist."
+                Write-Host "The user you specified does not exist." # If the user doesn't exist, the message will be displayed.
             }
             break
         }
+
+        # If 4 is chosen, the user will be prompted for a user to be deleted.
         4 {
             $username = Read-Host "Enter the username of the user to be deleted"
+
+            # This user will then be deleted from the system if exist and message will be printed if not.
             if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
                 Remove-LocalUser -Name $username -Force
             } else {
@@ -111,6 +125,8 @@ while ($true) {
             }
             break
         }
+
+        # If any other option is chosen, then the invalid message will be shown and the user will be asked for a valid input.
         default {
             Write-Host "Invalid input."
             $option = Read-Host "Please enter a number between 1-4 or 0 to quit"
