@@ -9,5 +9,17 @@ public class Main {
         friends.pop();
         friends.pop();
         friends.display();
+
+        IntStack numbers = new IntStack(5);
+
+        numbers.push(1);
+        numbers.push(2);
+        numbers.push(8);
+        numbers.push(10);
+        numbers.peek();
+        numbers.size();
+        numbers.pop();
+        numbers.peek();
+        numbers.size();
     }
 }
